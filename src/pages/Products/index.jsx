@@ -1,9 +1,10 @@
 import React from 'react'
+import Layout from '../../components/Layout'
 
-function index() {
+const index = () =>  {
     return (
         <div>
-            product view
+            products
         </div>
     )
 }

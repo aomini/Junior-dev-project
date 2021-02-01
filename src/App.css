@@ -1,0 +1,50 @@
+body{
+    padding:0;
+    margin:0;
+    background-size: cover;
+    min-height: 100vh;
+}
+*{
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    font-family: 'Poppins', sans-serif;
+}
+h1{
+    text-align: center;
+    color: #8bc9d6;
+}
+.app-container{
+    padding: 40px;
+    padding-left: 25vw;
+    background: white;
+}
+.navigation-menu{
+    width: 20vw;
+    background: #b4d0d6;
+    padding: 10px 20px;
+    position: fixed;
+    left: 0;
+    height: 100vh;
+}
+.navigation-menu ul{
+    background: white;
+    border-radius: 10px;
+}
+.navigation-menu ul .navigation-item{
+    padding: 10px 8px;
+}
+.navigation-menu ul .navigation-item:not(:last-child){
+    border-bottom: 2px solid #c3c3c3;
+}
+.navigation-menu ul .navigation-item:not(:last-child){
+    border-bottom: 2px solid #c3c3c3;
+}
+.navigation-item a{
+    color: #999bdc;
+    text-decoration:none;
+    font-weight: 550;
+}
+.navigation-item:hover a{
+   color: #7d7fce;
+}
