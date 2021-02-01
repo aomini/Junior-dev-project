@@ -1,11 +1,13 @@
 import React from 'react'
 import {Link} from "react-router-dom";
-const index = ({menus}) => {
+import Style from './style.module.css'
+
+const NavigationMenu = ({menus}) => {
     return (
-        <nav className="navigation-menu">
+        <nav className={Style.navigationMenu}>
             <ul>
                 {menus && menus.map(menu => 
-                    <li className="navigation-item">
+                    <li className={Style.navigationItem}>
                         <Link to={menu.to}>{menu.name}</Link>
                     </li>
                 )}
@@ -14,4 +16,4 @@ const index = ({menus}) => {
     )
 }
 
-export default index
+export default NavigationMenu

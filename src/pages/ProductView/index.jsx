@@ -1,29 +1,16 @@
-import React from 'react'
+import React,{useState,useMemo} from 'react'
 import Layout from '../../components/Layout'
+import ProductCard from '../../components/ProductCard'
+import {products} from './products'
+import Style from './style.module.scss'
 
 const index = () => {
-    const products =[
-        {
-           name: 'sofa',
-           price:200,
-           code:'sofa-101' 
-        },
-        {
-           name: 'sofa',
-           price:200,
-           code:'sofa-102' 
-        },
-        {
-           name: 'sofa',
-           price:200,
-           code:'sofa-103' 
-        },
-    ]
-
-
+    
     return (
-        <Layout>
-           
+        <Layout title="Product View Page">
+            <div className={Style.productListContainer}>
+               {products && products.map(product => <ProductCard className={Style.card} key={product.id} name={product.name} price={product.price} />)}
+            </div>
         </Layout>
     )
 }

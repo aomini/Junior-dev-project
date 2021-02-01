@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{Suspense} from 'react'
 import {
     BrowserRouter as Router,
     Switch,
@@ -6,43 +6,32 @@ import {
     Redirect,
   } from "react-router-dom";
 import Routes from './routes'
+import {menus} from './menus'
 import NavigationMenu from './components/NavigationMenu'
-import './App.css'
+import Style from './app.module.scss'
+
 
 const App = () => {
-
-    const menus =[
-        {
-            name :'Product View',
-            to:'/product-view'
-        },
-        {
-            name: 'Blogs',
-            to:'/blogs'
-        },
-        {
-            name:'Products',
-            to:'/products'
-        }
-    ]
     return (
-        <div className="app">
+        <div className={Style.app}>
             <h1>Furniture and Recliner </h1>
             <Router>
-                <div className="app-container">
+                <div className={Style.appContainer}>
                     <NavigationMenu menus={menus} />
                     <div>
-                        <Switch>
-                            {Routes && Routes.map(route => 
-                                <Route 
-                                    path={route.path}
-                                    component={route.component}
-                                    exact={route.exact || false}
-                                >
-                                    {route.redirect? <Redirect to={route.redirect} />:''}
-                                </Route>
-                            )}
-                        </Switch>
+                        <Suspense fallback={<div>Page is Loading...</div>}>
+                            <Switch>
+                                {Routes && Routes.map(route => 
+                                    <Route 
+                                        path={route.path}
+                                        component={route.component}
+                                        exact={route.exact}
+                                    >
+                                        {route.redirect? <Redirect to={route.redirect} />:null}
+                                    </Route>
+                                )}
+                            </Switch>
+                        </Suspense>
                     </div>
                 </div>
             </Router>

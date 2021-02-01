@@ -3,10 +3,9 @@ import Layout from '../../components/Layout'
 
 const index = () => {
     return (
-        <Layout>
-           
+        <Layout title="Blogs">
+           blogs
         </Layout>
     )
 }
-
 export default index

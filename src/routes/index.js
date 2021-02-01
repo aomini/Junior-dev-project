@@ -1,8 +1,6 @@
-import Products from '../pages/Products'
-import Blogs from '../pages/Blogs'
-import ProductView from '../pages/ProductView'
+import {lazy} from 'react'
 
-const Routes = [
+const routes = [
     {
         path:'/',
         redirect: '/product-view',
@@ -10,21 +8,16 @@ const Routes = [
     },
     {
         path:'/products',
-        component: Products,
-        exact:true
-
+        component: lazy(()=> import('../pages/Products')),
     },
     {
         path:'/blogs',
-        component: Blogs,
-        exact:true
-
+        component: lazy(()=> import('../pages/Blogs')),
     },
     {
         path:'/product-view',
-        component: ProductView,
-        exact:true
+        component: lazy(()=> import('../pages/ProductView')),
     },
 ]
 
-export default Routes
+export default routes 

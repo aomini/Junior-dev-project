@@ -1,12 +1,17 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap'
 
-const index = (props) => {
-    console.log(props);
+const Layout = (props) => {
     return (
         <div className="page-layout">
+            <Breadcrumb>
+                <BreadcrumbItem><Link to="/">Home</Link></BreadcrumbItem>
+                <BreadcrumbItem active>{props.title}</BreadcrumbItem>
+            </Breadcrumb>
             {props.children}
         </div>
     )
 }
 
-export default index
+export default Layout
