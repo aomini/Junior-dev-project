@@ -1,4 +1,4 @@
-export const products =[
+const products =[
     {
        name: 'sofa',
        price:200,
@@ -85,3 +85,9 @@ export const products =[
        id:3
     },
 ]
+
+export const fetchProducts = new Promise((resolve) =>
+  setTimeout(() => {
+    return resolve(products);
+  }, 5000)
+);

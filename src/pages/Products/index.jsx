@@ -1,11 +1,15 @@
-import React,{useMemo, useState} from 'react'
+import React,{useMemo,useEffect,useState} from 'react'
 import { Button } from 'reactstrap';
 import DataTable from 'react-data-table-component';
 import Layout from '../../components/Layout'
-import {products} from '../../products'
+import {fetchProducts} from '../../products'
 
 const Products = () =>  {
-    const [productList, setProductList] = useState(products)
+    
+    const [products, setProducts] = useState([])
+    useEffect(()=>{
+        fetchProducts.then(setProducts)
+    },[])
     const columns = useMemo(() => [
         {
           name: 'Name',
@@ -30,7 +34,7 @@ const Products = () =>  {
         cell: () => <Button size="sm" color="danger" >Delete</Button>,
         button: true,
        }
-      ], [productList]);
+      ], [products]);
     return (
         <Layout title="Products">
             <DataTable columns={columns} data={products}  pagination/>
