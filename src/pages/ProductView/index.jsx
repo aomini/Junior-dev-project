@@ -1,11 +1,10 @@
-import React,{useState,useMemo} from 'react'
+import React from 'react'
 import Layout from '../../components/Layout'
 import ProductCard from '../../components/ProductCard'
-import {products} from './products'
-import Style from './style.module.scss'
+import {products} from '../../products'
+import Style from './product-view.module.scss'
 
 const index = () => {
-    
     return (
         <Layout title="Product View Page">
             <div className={Style.productListContainer}>

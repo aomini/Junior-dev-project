@@ -1,8 +1,8 @@
 import React,{useMemo, useState} from 'react'
-import Layout from '../../components/Layout'
-import DataTable from 'react-data-table-component';
-import {products} from '../ProductView/products'
 import { Button } from 'reactstrap';
+import DataTable from 'react-data-table-component';
+import Layout from '../../components/Layout'
+import {products} from '../../products'
 
 const Products = () =>  {
     const [productList, setProductList] = useState(products)

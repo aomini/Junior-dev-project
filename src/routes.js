@@ -8,16 +8,20 @@ const routes = [
     },
     {
         path:'/products',
-        component: lazy(()=> import('../pages/Products')),
+        component: lazy(()=> import('./pages/Products')),
     },
     {
         path:'/blogs',
-        component: lazy(()=> import('../pages/Blogs')),
+        component: lazy(()=> import('./pages/Blogs')),
     },
     {
         path:'/product-view',
-        component: lazy(()=> import('../pages/ProductView')),
+        component: lazy(()=> import('./pages/ProductView')),
     },
+    {
+        path:'/*',
+        component: lazy(()=> import('./pages/404')),
+    }
 ]
 
 export default routes 

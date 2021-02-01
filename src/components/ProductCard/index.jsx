@@ -4,12 +4,12 @@ import {
     CardTitle, CardSubtitle, Button
   } from 'reactstrap';
 import {Link} from 'react-router-dom'
-import Style from './style.module.scss'
+import Style from './product-card.module.scss'
 
 const ProductCard = props => {
     return (
         <Card className={Style.card}>
-            <CardImg top width="200" src="https://source.unsplash.com/random/150" alt="Card image cap" />
+            <CardImg top width="200" src="https://source.unsplash.com/random" alt="Card image cap" />
             <CardBody>
                 <CardTitle tag="h6">{props.name.toUpperCase()}</CardTitle>
                 <CardSubtitle tag="h6" className="mb-2 text-dark">$ {props.price}</CardSubtitle>

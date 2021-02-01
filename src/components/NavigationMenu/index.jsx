@@ -1,12 +1,13 @@
 import React from 'react'
 import {Link} from "react-router-dom";
-import Style from './style.module.css'
+import {menus} from './menus'
+import Style from './navigation-menu.module.css'
 
-const NavigationMenu = ({menus}) => {
+const NavigationMenu = () => {
     return (
         <nav className={Style.navigationMenu}>
             <ul>
-                {menus && menus.map(menu => 
+                {menus.map(menu => 
                     <li className={Style.navigationItem}>
                         <Link to={menu.to}>{menu.name}</Link>
                     </li>
