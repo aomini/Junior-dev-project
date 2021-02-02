@@ -27,3 +27,6 @@
 .navigationItem:hover a{
    color: #7d7fce;
 }
+.navigationItem .isActive{
+    color: #5c33c1;
+}

@@ -1,0 +1,16 @@
+.pageContainer{
+    .headingAction{
+        display: flex;
+        justify-content: flex-end;
+       .addButton{
+           padding: 10px;
+           background: #b4d0d6;
+           border-radius:8px;
+           color: black;
+           &:hover{
+               color: white;
+               background: black;
+           }
+       }
+    }
+}

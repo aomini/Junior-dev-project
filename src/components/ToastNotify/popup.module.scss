@@ -1,0 +1,58 @@
+.notificationContainer {
+  font-size: 14px;
+  box-sizing: border-box;
+  position: fixed;
+  .notification {
+    max-width: 500px;
+    padding: 5px 8px;
+    border-radius: 4px;
+  }
+  .success {
+    background-color: #b4d0d6;
+  }
+}
+.topRight {
+  top: 12px;
+  right: 12px;
+  transition: transform 0.6s ease-in-out;
+  animation: toast-in-right 0.7s;
+}
+
+.bottomRight {
+  bottom: 12px;
+  right: 12px;
+  transition: transform 0.6s ease-in-out;
+  animation: toast-in-right 0.7s;
+}
+
+.topLeft {
+  top: 12px;
+  left: 12px;
+  transition: transform 0.6s ease-in;
+  animation: toast-in-left 0.7s;
+}
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+  .notificationButton {
+    border-radius: 40%;
+    padding: 2px 4px;
+    background: #c3c3c3;
+    color: black;
+    svg {
+      width: 15px;
+      height: 15px;
+    }
+  }
+}
+.bottomLeft {
+  bottom: 12px;
+  left: 12px;
+  transition: transform 0.6s ease-in;
+  animation: toast-in-left 0.7s;
+}
+.notificationTitle {
+  color: red;
+  margin-bottom: 0.2rem;
+  font-size: 16px;
+}
