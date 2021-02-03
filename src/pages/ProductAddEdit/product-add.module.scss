@@ -1,0 +1,33 @@
+.formPage {
+  background: white;
+  border-radius: 5px;
+  min-height: 100vh;
+  .breadcrumb {
+    margin-bottom: 0;
+  }
+  .headingArea {
+    padding: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #c3c3c3;
+    span {
+      color: #406c75;
+      font-size: 17px;
+      font-weight: 550;
+    }
+    a {
+      padding: 1px 6px;
+      background: tomato;
+      color: white;
+      border-radius: 50%;
+      svg {
+        width: 15px;
+        height: 15px;
+      }
+    }
+  }
+  .ProductForm {
+    padding: 13px;
+  }
+}

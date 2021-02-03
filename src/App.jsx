@@ -5,26 +5,15 @@ import {
   Route,
   Redirect,
 } from "react-router-dom"
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 import NavigationMenu from "./components/NavigationMenu"
-import ToastNotify from "./components/ToastNotify"
 import routes from "./routes"
 import Style from "./app.module.scss"
 
 const App = () => {
   return (
     <div className={Style.app}>
-      <ToastNotify
-        toastList={[
-          {
-            id: 1,
-            type: "success",
-            title: "Success",
-            description: "This is a success toast component",
-            icon: "",
-          },
-        ]}
-        position='topRight'
-      />
       <h1>Furniture and Recliner </h1>
       <Router>
         <div className={Style.appContainer}>
@@ -46,6 +35,7 @@ const App = () => {
           </Suspense>
         </div>
       </Router>
+      <ToastContainer autoClose={8000} />
     </div>
   )
 }

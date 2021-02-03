@@ -4,13 +4,21 @@ const routes = [
   {
     id: 1,
     path: "/",
-    redirect: "/product-view",
+    redirect: "/products",
     exact: true,
+  },
+  {
+    id: 3,
+    path: "/product/edit/:slug",
+    component() {
+      const ProductEdit = lazy(() => import("./pages/ProductAddEdit"))
+      return <ProductEdit editMode />
+    },
   },
   {
     id: 2,
     path: "/products/add",
-    component: lazy(() => import("./pages/ProductAdd")),
+    component: lazy(() => import("./pages/ProductAddEdit")),
   },
   {
     id: 3,
@@ -22,11 +30,7 @@ const routes = [
     path: "/blogs",
     component: lazy(() => import("./pages/Blogs")),
   },
-  {
-    id: 5,
-    path: "/product-view",
-    component: lazy(() => import("./pages/ProductView")),
-  },
+
   {
     id: 6,
     path: "/*",

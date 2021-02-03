@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import {
   Button,
@@ -10,22 +10,45 @@ import {
   Input,
 } from "reactstrap"
 import * as Icon from "react-feather"
-import useForm from "./useForm"
+import { toast } from "react-toastify"
+import useForm from "../../hooks/useForm"
 import { validate } from "./validationRules"
 
-const ProductForm = () => {
-  let history = useHistory()
+const ProductForm = ({ id, editMode }) => {
+  const history = useHistory()
   const submitData = () => {
-    let products = localStorage.getItem("products")
+    const products = localStorage.getItem("products")
       ? JSON.parse(localStorage.getItem("products"))
       : []
-    localStorage.setItem("products", JSON.stringify([...products, values]))
-    history.push("/products")
+    const newId = products.length ? products[products.length - 1].id + 1 : 1
+    const objId = editMode ? id : newId
+    localStorage.setItem(
+      "products",
+      JSON.stringify([
+        ...(editMode
+          ? products.filter((product) => product.id != id)
+          : products),
+        { id: objId, ...values },
+      ])
+    )
+    editMode
+      ? toast.success("Updated Product")
+      : toast.success("Added New Product")
+    history.goBack()
   }
-  const { handleChange, handleSubmit, values, errors } = useForm(
+
+  const { handleChange, handleSubmit, setValues, values, errors } = useForm(
     submitData,
     validate
   )
+
+  useEffect(() => {
+    if (id) {
+      let products = JSON.parse(localStorage.getItem("products"))
+      let product = products.filter((product) => product.id == id)
+      setValues({ ...product[0] })
+    }
+  }, [id])
 
   return (
     <div>
@@ -40,7 +63,6 @@ const ProductForm = () => {
                 invalid={"name" in errors}
                 value={values.name || ""}
                 onChange={handleChange}
-                placeholder=''
               />
               {errors.name && <FormFeedback>{errors.name}</FormFeedback>}
             </FormGroup>
@@ -88,8 +110,8 @@ const ProductForm = () => {
           <Col sm={12}>
             <FormGroup>
               <Button size='sm' color='info' onClick={handleSubmit}>
-                <Icon.Plus />
-                Add
+                <Icon.Save className='mr-2' stroke-width='1' />
+                {editMode ? "Update" : "Add"}
               </Button>
             </FormGroup>
           </Col>

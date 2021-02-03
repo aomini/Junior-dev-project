@@ -3,9 +3,10 @@ import { Link } from "react-router-dom"
 import { Jumbotron } from "reactstrap"
 import * as Icon from "react-feather"
 import Style from "./product-add-card.module.scss"
+
 const ProductAddCard = () => {
   return (
-    <div>
+    <div className={Style.addCardContainer}>
       <Jumbotron>
         <p className={Style.cardText}>
           No products Found. Would you like to Add?

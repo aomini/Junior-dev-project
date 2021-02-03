@@ -1,19 +1,21 @@
-.cardText{
-    text-align:center;
+.cardText {
+  text-align: center;
 }
-.addButtonContainer{
-    display: flex;
-    justify-content: center;
+.addCardContainer {
+  width: 100%;
+}
+.addButtonContainer {
+  display: flex;
+  justify-content: center;
 
-    .addButton{
-        padding: 20px;
-        border-radius: 50%;
-        &:hover{
-            background: black;
-            svg{
-                color: white;
-            }
-        }
-       
+  .addButton {
+    padding: 20px;
+    border-radius: 50%;
+    &:hover {
+      background: black;
+      svg {
+        color: white;
+      }
     }
+  }
 }
