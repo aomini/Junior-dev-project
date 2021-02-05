@@ -1,0 +1,34 @@
+.colorButton {
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  margin-right: 10px;
+  display: inline-block;
+  border: 1px solid #c3c3c3;
+}
+.colorButton:hover {
+  cursor: pointer;
+}
+.sizesContainer {
+  padding-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.sizeButton {
+  margin: 0 10px 10px 0;
+  padding: 10px 15px;
+  border: 2px solid #c3c3c3;
+  color: black;
+  border-radius: 8px;
+}
+.moreButton {
+  margin: 0 10px 10px 0;
+  padding: 10px 15px;
+  border: 2px solid #c3c3c3;
+  color: white;
+  background: #1d1d1d;
+  border-radius: 8px;
+}
+.moreButton:hover {
+  cursor: pointer;
+}

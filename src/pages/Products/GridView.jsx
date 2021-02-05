@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import classNames from "classnames/bind"
 import ProductAddCard from "../../components/ProductAddCard"
 import ProductCard from "./ProductCard"
@@ -13,14 +13,6 @@ const GridView = ({
   selector,
   setSelector,
 }) => {
-  useEffect(() => {
-    setProducts(
-      localStorage.getItem("products")
-        ? JSON.parse(localStorage.getItem("products"))
-        : []
-    )
-  }, [])
-
   return (
     <div
       className={classNames(

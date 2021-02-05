@@ -1,32 +1,33 @@
-.navigationMenu{
-    width: 20vw;
-    background: #b4d0d6;
-    padding: 10px 20px;
-    position: fixed;
-    left: 0;
-    height: 100vh;
+.navigationMenu {
+  background: #b4d0d6;
+  padding: 10px 20px;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.navigationMenu ul{
-    background: white;
-    border-radius: 10px;
+.navigationMenu ul {
+  background: white;
+  border-radius: 10px;
 }
-.navigationMenu ul .navigationItem{
-    padding: 10px 8px;
+.navigationMenu ul .navigationItem {
+  min-width: 200px;
+  padding: 10px 8px;
 }
-.navigationMenu ul .navigationItem:not(:last-child){
-    border-bottom: 2px solid #c3c3c3;
+.navigationMenu ul .navigationItem:not(:last-child) {
+  border-bottom: 2px solid #c3c3c3;
 }
-.navigationMenu ul .navigationItem:not(:last-child){
-    border-bottom: 2px solid #c3c3c3;
+.navigationMenu ul .navigationItem:not(:last-child) {
+  border-bottom: 2px solid #c3c3c3;
 }
-.navigationItem a{
-    color: #999bdc;
-    text-decoration:none;
-    font-weight: 550;
+.navigationItem a {
+  color: #1d1d1d;
+  text-decoration: none;
+  font-weight: 550;
 }
-.navigationItem:hover a{
-   color: #7d7fce;
+.navigationItem:hover a {
+  color: #7d7fce;
 }
-.navigationItem .isActive{
-    color: #5c33c1;
+.navigationItem .isActive {
+  color:  #7d7fce;
 }

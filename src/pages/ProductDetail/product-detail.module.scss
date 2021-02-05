@@ -1,0 +1,24 @@
+.productDetail {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.imageContainer {
+  max-width: 40%;
+  border: 1px solid #c3c3c3;
+  margin-right: 20px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+.imageContainer img {
+  width: 100%;
+  height: 100%;
+}
+.detailContainer {
+  max-width: 58%;
+}
+.backToPage {
+  padding: 10px 0;
+  display: flex;
+  justify-content: flex-end;
+}

@@ -5,6 +5,7 @@ import { Grid, AlignJustify, PlusCircle } from "react-feather"
 import Layout from "../../components/Layout"
 import ProductTable from "./ProductTable"
 import GridComponent from "./GridView"
+import ProductFilters from "./ProductFilters"
 import Style from "./products.module.scss"
 
 const Products = () => {
@@ -12,6 +13,7 @@ const Products = () => {
     JSON.parse(localStorage.getItem("productGridView")) ? true : false
   )
   const [products, setProducts] = useState([])
+  const [showProducts, setShowProducts] = useState([])
   const [modal, setModal] = useState(false)
   const [selector, setSelector] = useState(false)
 
@@ -24,16 +26,20 @@ const Products = () => {
   }, [])
 
   useEffect(() => {
+    setShowProducts(products)
+  }, [products])
+
+  useEffect(() => {
     localStorage.setItem("productGridView", gridView ? 1 : 0)
   }, [gridView])
 
   const childrenProps = {
-    products,
-    setProducts,
+    products: showProducts,
     modal,
     setModal,
     selector,
     setSelector,
+    setProducts,
   }
 
   return (
@@ -47,7 +53,6 @@ const Products = () => {
           </div>
           <div>
             <button
-              title='Add Products'
               className={classNames(Style.addButton, "mr-2", "pointer")}
               onClick={() => setGridView(!gridView)}
             >
@@ -66,6 +71,11 @@ const Products = () => {
             </Link>
           </div>
         </div>
+        <ProductFilters
+          setProducts={setShowProducts}
+          allProducts={products}
+          products={showProducts}
+        />
       </div>
       {gridView ? (
         <GridComponent {...childrenProps} />

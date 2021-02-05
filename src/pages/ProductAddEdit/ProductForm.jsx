@@ -1,21 +1,18 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
-import {
-  Button,
-  Col,
-  Form,
-  FormGroup,
-  FormFeedback,
-  Label,
-  Input,
-} from "reactstrap"
+import { Button, Col, Form, FormGroup } from "reactstrap"
 import * as Icon from "react-feather"
 import { toast } from "react-toastify"
+import { countProperties } from "../../utilities"
 import useForm from "../../hooks/useForm"
+import FloatingFormGroup from "../../components/FloatingFormGroup"
+import AutoCompleteModal from "./AutoCompleteModal"
 import { validate } from "./validationRules"
 
 const ProductForm = ({ id, editMode }) => {
   const history = useHistory()
+  const [autoCompleteModal, setAutoCompleteModal] = useState(false)
+
   const submitData = () => {
     const products = localStorage.getItem("products")
       ? JSON.parse(localStorage.getItem("products"))
@@ -41,6 +38,15 @@ const ProductForm = ({ id, editMode }) => {
     submitData,
     validate
   )
+  useEffect(() => {
+    if (
+      !editMode && localStorage.getItem("productFilters")
+        ? countProperties(JSON.parse(localStorage.getItem("productFilters")))
+        : false
+    ) {
+      setAutoCompleteModal(true)
+    }
+  }, [])
 
   useEffect(() => {
     if (id) {
@@ -48,75 +54,90 @@ const ProductForm = ({ id, editMode }) => {
       let product = products.filter((product) => product.id == id)
       setValues({ ...product[0] })
     }
-  }, [id])
+  }, [id, setValues])
 
+  const formMapper = [
+    {
+      name: "name",
+      type: "text",
+      defaultValue: "",
+      validation: true,
+      dynamicAttributes: {
+        onChange: handleChange,
+      },
+      col: 6,
+    },
+    {
+      name: "code",
+      type: "text",
+      defaultValue: "",
+      validation: true,
+      dynamicAttributes: {
+        onChange: handleChange,
+      },
+      col: 6,
+    },
+    {
+      name: "price",
+      type: "number",
+      defaultValue: "",
+      validation: true,
+      dynamicAttributes: {
+        onChange: handleChange,
+      },
+      col: 6,
+    },
+    {
+      name: "url",
+      type: "text",
+      defaultValue: "",
+      dynamicAttributes: {
+        onChange: handleChange,
+        rows: "10",
+      },
+      col: 6,
+    },
+    {
+      name: "description",
+      type: "textarea",
+      defaultValue: "",
+      dynamicAttributes: {
+        onChange: handleChange,
+      },
+      col: 12,
+    },
+  ]
   return (
     <div>
       <Form>
         <FormGroup row>
-          <Col sm={6}>
-            <FormGroup>
-              <Label for='name'>Name</Label>
-              <Input
-                type='text'
-                name='name'
-                invalid={"name" in errors}
-                value={values.name || ""}
-                onChange={handleChange}
+          {formMapper.map((mapper) => (
+            <Col sm={mapper.col} key={mapper.name}>
+              <FloatingFormGroup
+                {...mapper}
+                errors={errors}
+                value={values[mapper.name]}
               />
-              {errors.name && <FormFeedback>{errors.name}</FormFeedback>}
-            </FormGroup>
-          </Col>
-          <Col sm={6}>
-            <FormGroup>
-              <Label for='code'>Code</Label>
-              <Input
-                type='text'
-                name='code'
-                invalid={"code" in errors}
-                value={values.code || ""}
-                onChange={handleChange}
-                placeholder=''
-              />
-              {errors.code && <FormFeedback>{errors.code}</FormFeedback>}
-            </FormGroup>
-          </Col>
-          <Col sm={6}>
-            <FormGroup>
-              <Label for='price'>Price</Label>
-              <Input
-                type='number'
-                name='price'
-                invalid={"price" in errors}
-                value={values.price >= 0 ? values.price : 0 || 0.0}
-                onChange={handleChange}
-                placeholder=''
-              />
-              {errors.price && <FormFeedback>{errors.price}</FormFeedback>}
-            </FormGroup>
-          </Col>
-          <Col sm={6}>
-            <FormGroup>
-              <Label for='url'>Image Url</Label>
-              <Input
-                type='text'
-                name='url'
-                value={values.url || ""}
-                onChange={handleChange}
-                placeholder=''
-              />
-            </FormGroup>
-          </Col>
+            </Col>
+          ))}
           <Col sm={12}>
             <FormGroup>
               <Button size='sm' color='info' onClick={handleSubmit}>
-                <Icon.Save className='mr-2' stroke-width='1' />
+                <Icon.Save className='mr-2' strokeWidth='1' />
                 {editMode ? "Update" : "Add"}
               </Button>
             </FormGroup>
           </Col>
         </FormGroup>
       </Form>
+      {autoCompleteModal && (
+        <AutoCompleteModal
+          className=''
+          modal={autoCompleteModal}
+          setModal={setAutoCompleteModal}
+          setValues={setValues}
+        />
+      )}
     </div>
   )
 }

@@ -9,4 +9,7 @@ const uuidv4 = () => {
     return v.toString(16)
   })
 }
-export { capitalize, uuidv4 }
+const countProperties = (obj) => {
+  return Object.keys(obj).length
+}
+export { capitalize, uuidv4, countProperties }

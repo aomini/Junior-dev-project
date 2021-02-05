@@ -16,6 +16,14 @@ const routes = [
     },
   },
   {
+    id: 3,
+    path: "/product/view/:id",
+    component() {
+      const ProductDetail = lazy(() => import("./pages/ProductDetail"))
+      return <ProductDetail editMode />
+    },
+  },
+  {
     id: 2,
     path: "/products/add",
     component: lazy(() => import("./pages/ProductAddEdit")),
