@@ -6,15 +6,13 @@ import "./layout.scss"
 const Layout = (props) => {
   return (
     <div className='page-layout container mt-4'>
-      <div>
-        <Breadcrumb>
-          <BreadcrumbItem>
-            <Link to='/'>Home </Link>
-          </BreadcrumbItem>
-          <BreadcrumbItem active>{props.title}</BreadcrumbItem>
-        </Breadcrumb>
-        <div style={{ padding: "15px" }}>{props.children}</div>
-      </div>
+      <Breadcrumb>
+        <BreadcrumbItem>
+          <Link to='/'>Home </Link>
+        </BreadcrumbItem>
+        <BreadcrumbItem active>{props.title}</BreadcrumbItem>
+      </Breadcrumb>
+      <div style={{ padding: "15px" }}>{props.children}</div>
     </div>
   )
 }

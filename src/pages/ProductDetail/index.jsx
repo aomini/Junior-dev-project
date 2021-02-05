@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react"
 import { useParams, useHistory } from "react-router-dom"
 import { capitalize } from "../../utilities"
 import Layout from "../../components/Layout"
-import BackToPage from "../../components/BackToPage"
-import Style from "./product-detail.module.scss"
+import LinkToPage from "../../components/LinkToPage"
 import AvailableColors from "./AvailableColors"
 import AvailableSizes from "./AvailableSizes"
+import Style from "./product-detail.module.scss"
 import defaultImage from "./defaultImage.png"
 
 const ProductDetail = ({ editMode }) => {
@@ -31,7 +31,7 @@ const ProductDetail = ({ editMode }) => {
   ]
   return (
     <Layout title={product.name ? capitalize(product.name) : ""}>
-      <BackToPage to='/products' title='Back to Products' />
+      <LinkToPage to='/products' title='Back to Products' />
       <div className={Style.productDetail}>
         <div className={Style.imageContainer}>
           <img src={product.url ? product.url : defaultImage} alt='' />

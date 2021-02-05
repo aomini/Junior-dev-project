@@ -12,4 +12,7 @@ const uuidv4 = () => {
 const countProperties = (obj) => {
   return Object.keys(obj).length
 }
-export { capitalize, uuidv4, countProperties }
+const truncateText = (text, length) => {
+  return text.substring(0, length) + (text.length > length ? "..." : "")
+}
+export { capitalize, uuidv4, countProperties, truncateText }

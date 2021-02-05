@@ -1,0 +1,14 @@
+.blogsContainer div:not(:last-child) {
+  border-bottom: 2px solid #c3c3c3;
+}
+.addButton {
+  padding: 10px;
+  background: #b4d0d6;
+  border: none;
+  border-radius: 8px;
+  color: black;
+  &:hover {
+    color: white;
+    background: black;
+  }
+}

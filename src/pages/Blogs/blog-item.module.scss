@@ -1,0 +1,32 @@
+$image-border: #c3c3c3;
+
+.blogItem {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 20px 0;
+}
+.imageContainer {
+  padding: 10px;
+  border-radius: 8px;
+  min-width: 430px;
+  width: 430px;
+  object-fit: contain;
+  height: 100%;
+  border: 1px solid $image-border;
+}
+.imageContainer img {
+  width: 100%;
+}
+.blogDetails {
+  padding: 0 0 0 20px;
+}
+.blogTitle {
+}
+.blogShortDesc {
+}
+.truncate {
+  height: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

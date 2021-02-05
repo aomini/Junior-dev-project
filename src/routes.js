@@ -8,7 +8,7 @@ const routes = [
     exact: true,
   },
   {
-    id: 3,
+    id: 2,
     path: "/product/edit/:slug",
     component() {
       const ProductEdit = lazy(() => import("./pages/ProductAddEdit"))
@@ -24,23 +24,35 @@ const routes = [
     },
   },
   {
-    id: 2,
+    id: 4,
     path: "/products/add",
     component: lazy(() => import("./pages/ProductAddEdit")),
   },
   {
-    id: 3,
+    id: 5,
     path: "/products",
     component: lazy(() => import("./pages/Products")),
   },
   {
-    id: 4,
+    id: 6,
     path: "/blogs",
     component: lazy(() => import("./pages/Blogs")),
   },
-
   {
-    id: 6,
+    id: 7,
+    path: "/blog/add",
+    component: lazy(() => import("./pages/BlogAddEdit")),
+  },
+  {
+    id: 8,
+    path: "/blog/edit/:slug",
+    component() {
+      const BlogEdit = lazy(() => import("./pages/BlogAddEdit"))
+      return <BlogEdit editMode />
+    },
+  },
+  {
+    id: 9,
     path: "/*",
     component: lazy(() => import("./pages/404")),
   },
